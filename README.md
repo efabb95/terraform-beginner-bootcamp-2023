@@ -2,7 +2,7 @@
 
 ## Semantic Versioning :mage:
 
-This project is going utilize semantic versioning for its tagging [semver.org](https://semver.org/)
+This project is going to utilize semantic versioning for its tagging [semver.org](https://semver.org/)
 
 The general format:
 
@@ -22,7 +22,7 @@ The Terraform CLI installation instructions have changed due to gpg keyring chan
 
 ### Considerations for Linux Distribution
 
-This project is built againsts Ubuntu.
+This project is built against Ubuntu.
 Please consider checking your Linux Distribution and change accordingly to distribution needs.
 [How To Check OS Version in Linux](https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/)
 
@@ -45,7 +45,7 @@ UBUNTU_CODENAME=jammy
 
 ### Refactoring into Bash Scripts
 
-While fixing the Terraform CLI gpg deprecation issues we notice that bash scripts steps were a considerable amount more code. So we decided to create a bash script to install the Terraform CLI.
+To reduce code in .gitpod.yml we decided to create a bash script to install the Terraform CLI.
 
 This bash script is located here: ([./bin/install_terraform_cli](./bin/install_terraform_cli))
 
@@ -54,7 +54,7 @@ This bash script is located here: ([./bin/install_terraform_cli](./bin/install_t
 - This will allow better portability for other projects that need to install Terraform CLI
 
 #### Shebang Considerations
-A Shebang (pronunced Sha-bang) tells the bash script what program that will interpret the script. eg. `#!/bin/bash`
+A Shebang (pronunced Sha-bang) tells the bash script what program will interpret the script. eg. `#!/bin/bash`
 
 ChatGPT recommended this format for bash: `#!/usr/bin/env bash`
 
@@ -65,7 +65,7 @@ https://en.wikipedia.org/wiki/Shebang_(Unix)
 
 #### Execution Considerations
 
-When executing the bash script we can use the `./` shorthand notiation to execute the bash script.
+When executing the bash script we can use the `./` shorthand notation to execute the bash script.
 
 eg. `./bin/install_terraform_cli`
 
@@ -105,9 +105,9 @@ We can filter specific env vars using grep eg. `env | grep AWS_`
 
 ### Setting and Unsetting Env Vars
 
-In the terminal we can set using `export HELLO='world`
-
-In the terrminal we unset using `unset HELLO`
+In the terminal we can:
+- set using `export HELLO='world'`
+- unset using `unset HELLO`
 
 We can set an env var temporarily when just running a command
 
@@ -144,7 +144,7 @@ gp env HELLO='world'
 
 All future workspaces launched will set the env vars for all bash terminals opened in thoes workspaces.
 
-You can also set en vars in the `.gitpod.yml` but this can only contain non-senstive env vars.
+You can also set env vars in the `.gitpod.yml` but this can only contain non-senstive env vars.
 
 ## AWS CLI Installation
 
@@ -159,7 +159,7 @@ We can check if our AWS credentials is configured correctly by running the follo
 aws sts get-caller-identity
 ```
 
-If it is succesful you should see a json payload return that looks like this:
+If it is successful you should see a json payload return that looks like this:
 
 ```json
 {
@@ -170,6 +170,16 @@ If it is succesful you should see a json payload return that looks like this:
 ```
 
 We'll need to generate AWS CLI credits from IAM User in order to the user AWS CLI.
+
+## AWS S3 Bucket
+
+We tried with terraform to create an S3 bucket with random name but we noticed that the name of the bucket must be written with following rules:
+- Bucket names must be between 3 (min) and 63 (max) characters long.
+- Bucket names can consist only of lowercase letters, numbers, dots (.), and hyphens (-).
+- Bucket names must begin and end with a letter or number.
+- Bucket names must not contain two adjacent periods.
+
+Other rules: [AWS S3 docs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
 
 
 ## Terraform Basics
@@ -194,30 +204,25 @@ At the start of a new terraform project we will run `terraform init` to download
 
 #### Terraform Plan
 
-`terraform plan`
-
-This will generate out a changeset, about the state of our infrastructure and what will be changed.
+With `terraform plan` we will generate out a changeset, about the state of our infrastructure and what will be changed.
 
 We can output this changeset ie. "plan" to be passed to an apply, but often you can just ignore outputting.
 
 #### Terraform Apply
 
-`terraform apply`
-
-This will run a plan and pass the changeset to be execute by terraform. Apply should prompt yes or no.
+With `terraform apply` will run a plan and pass the changeset to be execute by terraform. Apply should prompt yes or no.
 
 If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
 
 #### Terraform Destroy
 
-`teraform destroy`
-This will destroy resources.
+`terraform destroy` will destroy resources.
 
-You can alos use the auto approve flag to skip the approve prompt eg. `terraform apply --auto-approve`
+You can also use the auto approve flag to skip the approve prompt eg. `terraform apply --auto-approve`
 
 #### Terraform Lock Files
 
-`.terraform.lock.hcl` contains the locked versioning for the providers or modulues that should be used with this project.
+`.terraform.lock.hcl` contains the locked versioning for the providers or modules that should be used with this project.
 
 The Terraform Lock File **should be committed** to your Version Control System (VSC) eg. Github
 
