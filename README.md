@@ -171,6 +171,16 @@ If it is successful you should see a json payload return that looks like this:
 
 We'll need to generate AWS CLI credits from IAM User in order to the user AWS CLI.
 
+## AWS S3 Bucket
+
+We tried with terraform to create an S3 bucket with random name but we noticed that the name of the bucket must be written with following rules:
+- Bucket names must be between 3 (min) and 63 (max) characters long.
+- Bucket names can consist only of lowercase letters, numbers, dots (.), and hyphens (-).
+- Bucket names must begin and end with a letter or number.
+- Bucket names must not contain two adjacent periods.
+
+Other rules: [AWS S3 docs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
+
 
 ## Terraform Basics
 
