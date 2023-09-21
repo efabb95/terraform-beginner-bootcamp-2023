@@ -273,3 +273,28 @@ Provide the following code (replace your token in the file):
 
 We have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
 
+## Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch bash a wiswig view to generate a token. Click on the link to create the token for our gitpod, select quit in bash script and then add to bash the new token. 
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+Eventually there is a workaround, after we manually generate a token in Terraform Cloud, we create and open the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+``````
