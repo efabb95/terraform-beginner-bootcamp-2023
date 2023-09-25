@@ -1,6 +1,12 @@
 # Terraform Beginner Bootcamp 2023
 
-## Semantic Versioning :mage:
+## Table of Contenst
+
+- [Semantic Versioning](#semantic-versioning)
+- [Install the Terraform CLI](#install-terraform-cli)
+  - [Considerations with the Terraform CLI changes](#considerations-with-the-terraform-cli-changes)
+
+## Semantic Versioning
 
 This project is going to utilize semantic versioning for its tagging [semver.org](https://semver.org/)
 
@@ -12,7 +18,7 @@ The general format:
 - **MINOR** version when you add functionality in a backward compatible manner
 - **PATCH** version when you make backward compatible bug fixes
 
-## Install Terrafrom CLI
+## Install Terraform CLI
 
 ### Considerations with the Terraform CLI changes
 The Terraform CLI installation instructions have changed due to gpg keyring changes. So we needed refer to the latest install CLI instructions via Terraform Documentation and change the scripting for install.
