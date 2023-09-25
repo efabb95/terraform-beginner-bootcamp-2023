@@ -8,7 +8,7 @@
     + [Shebang Considerations](#shebang-considerations)
     + [Execution Considerations](#execution-considerations)
     + [Linux Permissions Considerations](#linux-permissions-considerations)
-  * [Github Lifecycle (Before, Init, Command)](#github-lifecycle--before--init--command-)
+- [Gitpod Lifecycle (Before, Init, Command)](#gitpod-lifecycle--before--init--command-)
 - [Working Env Vars](#working-env-vars)
   * [env command](#env-command)
   * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
@@ -28,7 +28,7 @@
     + [Terraform State Files](#terraform-state-files)
     + [Terraform Directory](#terraform-directory)
 - [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
-- [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace-1)
+
 
 ## Semantic Versioning
 
@@ -119,7 +119,7 @@ chmod 744 ./bin/install_terraform_cli
 
 https://en.wikipedia.org/wiki/Chmod
 
-### Github Lifecycle (Before, Init, Command)
+## Gitpod Lifecycle (Before, Init, Command)
 
 We need to be careful when using the Init because it will not rerun if we restart an existing workspace.
 
@@ -302,31 +302,3 @@ Provide the following code (replace your token in the file):
 ``````
 
 We have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
-
-## Issues with Terraform Cloud Login and Gitpod Workspace
-
-When attempting to run `terraform login` it will launch bash a wiswig view to generate a token. Click on the link to create the token for our gitpod, select quit in bash script and then add to bash the new token. 
-
-```
-https://app.terraform.io/app/settings/tokens?source=terraform-login
-```
-Eventually there is a workaround, after we manually generate a token in Terraform Cloud, we create and open the file manually here:
-
-```sh
-touch /home/gitpod/.terraform.d/credentials.tfrc.json
-open /home/gitpod/.terraform.d/credentials.tfrc.json
-```
-
-Provide the following code (replace your token in the file):
-
-```json
-{
-  "credentials": {
-    "app.terraform.io": {
-      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
-    }
-  }
-}
-``````
-
-Using chatGPT we have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
