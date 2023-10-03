@@ -1,4 +1,5 @@
-tasks:
+tasks 
+:
   
   - name: terraform
     before: |
@@ -31,3 +32,4 @@ vscode:
     - amazonwebservices.aws-toolkit-vscode
     - hashicorp.terraform
     - mhutchie.git-graph
+    - golang.Go
