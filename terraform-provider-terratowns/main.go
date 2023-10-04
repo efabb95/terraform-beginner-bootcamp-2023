@@ -16,7 +16,8 @@ func main() {
 	fmt.Println("Hello, world!")
 }
 
-// in golang, a titlecase function will get exported.
+
+//in golang, a titlecase function will get exported
 func Provider() *schema.Provider {
 	var p *schema.Provider
 	p = &schema.Provider{
