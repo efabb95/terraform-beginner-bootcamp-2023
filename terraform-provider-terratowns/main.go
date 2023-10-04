@@ -1,7 +1,7 @@
 package main
 
 import (
-	//"log"
+	// "log"
 	"fmt"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
@@ -16,8 +16,7 @@ func main() {
 	fmt.Println("Hello, world!")
 }
 
-
-//in golang, a titlecase function will get exported
+// in golang, a titlecase function will get exported.
 func Provider() *schema.Provider {
 	var p *schema.Provider
 	p = &schema.Provider{
@@ -38,7 +37,6 @@ func Provider() *schema.Provider {
 				Sensitive: true, // make the token as sensitive to hide it the logs
 				Required: true,
 				Description: "Bearer token for authorization",
-
 			},
 			"user_uuid": {
 				Type: schema.TypeString,
@@ -53,12 +51,10 @@ func Provider() *schema.Provider {
 }
 
 //func validateUUID(v interface{}, k string) (ws []string, errors []error) {
-//	log.Print("validateUUID:start")
+//	log.Print('validateUUID:start')
 //	value := v.(string)
-//	if _, err := uuid.Parse(value); err != nil {
-//		errors = append(errors, fmt.Errorf("invalid UUID format"))
+//	if _,err = uuid.Parse(value); err != nil {
+//		errors = append(error, fmt.Errorf("invalid UUID format"))
 //	}
-//	log.Print("validateUUID:end")
-//	return
+//	log.Print('validateUUID:end')
 //}
-
