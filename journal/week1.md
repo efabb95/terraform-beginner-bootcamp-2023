@@ -12,7 +12,7 @@ git tag -d <tag_name>
 Remotely delete tag
 
 ```sh
-git push --delete origin tagname
+git push --delete origin <tag_name>
 ```
 
 Checkout the commit that you want to retag. Grab the sha from your Github history.
