@@ -38,3 +38,18 @@ provider "terratowns" {
 //  content_version = var.content_version
 //  assets_path = var.assets_path
 //}
+
+
+resource "terratowns_home" "home" {
+  name = "Best places in Milan!"
+  description = <<DESCRIPTION
+Milan is a city in Northern Italy, capital of Lombardy, 
+and the second-most populous city proper in Italy after Rome. 
+The city proper has a population of about 1.4 million,
+while its metropolitan city has 3.26 million inhabitants.
+DESCRIPTION
+  #domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = "3fdq3gz.cloudfront.net"
+  town = "gamers-grotto"
+  content_version = 1
+}
