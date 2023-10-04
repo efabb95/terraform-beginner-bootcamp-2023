@@ -1,4 +1,5 @@
-tasks:
+tasks 
+:
   
   - name: terraform
     before: |

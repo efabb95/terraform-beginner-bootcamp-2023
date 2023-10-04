@@ -38,6 +38,7 @@ func Provider() *schema.Provider {
 				Sensitive: true, // make the token as sensitive to hide it the logs
 				Required: true,
 				Description: "Bearer token for authorization",
+
 			},
 			"user_uuid": {
 				Type: schema.TypeString,
@@ -60,3 +61,4 @@ func Provider() *schema.Provider {
 //	log.Print("validateUUID:end")
 //	return
 //}
+
