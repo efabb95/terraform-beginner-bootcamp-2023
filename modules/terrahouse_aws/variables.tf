@@ -16,22 +16,9 @@ variable "bucket_name" {
   }
 }
 
-variable "index_html_filepath" {
-  description = "The path of index file"
+variable "public_path" {
+  description = "The file path of public dir"
   type        = string
-  validation {
-    condition     = fileexists(var.index_html_filepath)
-    error_message = "File index.html not exists"
-  }
-}
-
-variable "error_html_filepath" {
-  description = "The path of error file"
-  type        = string
-  validation {
-    condition     = fileexists(var.error_html_filepath)
-    error_message = "File error.html not exists"
-  }
 }
 
 variable "content_version" {
@@ -43,9 +30,4 @@ variable "content_version" {
     error_message = "The content_version must be a positive integer starting at 1"
   }
   
-}
-
-variable "assets_path" {
-  description = "Path to assets folder"
-  type = string
 }

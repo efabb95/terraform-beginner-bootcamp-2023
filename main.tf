@@ -13,12 +13,12 @@ terraform {
   #    name = "terra-house-1"
   #  }
   #}
-  #cloud {
-  #  organization = "ExamPro"
-  #  workspaces {
-  #    name = "terra-house-1"
-  #  }
-  #}
+  cloud {
+    organization = "terraform-beginner-bootcamp-efabb95"
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
 
 }
 
@@ -29,18 +29,16 @@ provider "terratowns" {
   
 }
 
-module "terrahouse_aws" {
+module "home_milan_hosting" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.teacherseat_user_uuid
   bucket_name = var.bucket_name
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.milan.public_path
+  content_version = var.milan.content_version
 }
 
 
-resource "terratowns_home" "home" {
+resource "terratowns_home" "home_milan" {
   name = "Best places in Milan!"
   description = <<DESCRIPTION
 Milan is a city in Northern Italy, capital of Lombardy, 
@@ -48,7 +46,31 @@ and the second-most populous city proper in Italy after Rome.
 The city proper has a population of about 1.4 million,
 while its metropolitan city has 3.26 million inhabitants.
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_milan_hosting.domain_name
+  #domain_name = "3fdq3gz.cloudfront.net"
+  town = "missingo"
+  content_version = 1
+}
+
+
+module "home_rome_hosting" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.teacherseat_user_uuid
+  bucket_name = var.bucket_name
+  public_path = var.rome.public_path
+  content_version = var.rome.content_version
+}
+
+resource "terratowns_home" "home_rome" {
+  name = "Best places in Rome!"
+  description = <<DESCRIPTION
+Rome is the capital city of Italy. It is also the capital of the Lazio region, 
+the centre of the Metropolitan City of Rome, and a special comune named Comune di Roma Capitale.
+With 2,860,009 residents in 1,285 km2 (496.1 sq mi), Rome is the country's 
+most populated comune and the third most populous city in the European 
+Union by population within city limits.
+DESCRIPTION
+  domain_name = module.home_rome_hosting.domain_name
   #domain_name = "3fdq3gz.cloudfront.net"
   town = "missingo"
   content_version = 1

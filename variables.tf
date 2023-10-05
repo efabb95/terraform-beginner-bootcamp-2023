@@ -22,10 +22,16 @@ variable "error_html_filepath" {
     type = string
 }
 
-variable "content_version" {
-    type = number
+variable "milan" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
 }
 
-variable "assets_path" {
-    type = string
+variable "rome" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
 }
