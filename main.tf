@@ -49,7 +49,7 @@ DESCRIPTION
   domain_name = module.home_milan_hosting.domain_name
   #domain_name = "3fdq3gz.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.milan.content_version
 }
 
 
@@ -73,5 +73,5 @@ DESCRIPTION
   domain_name = module.home_rome_hosting.domain_name
   #domain_name = "3fdq3gz.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.rome.content_version
 }
