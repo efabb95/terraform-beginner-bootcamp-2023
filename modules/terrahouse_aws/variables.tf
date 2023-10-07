@@ -7,31 +7,18 @@ variable "user_uuid" {
   }
 }
 
-variable "bucket_name" {
-  description = "The name of the S3 bucket"
-  type        = string
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9.-]{3,63}$", var.bucket_name))
-    error_message = "Invalid bucket name. The name must be between 3 and 63 characters, contain only letters, numbers, hyphens, and periods, and must not start or end with a hyphen or period."
-  }
-}
+#variable "bucket_name" {
+#  description = "The name of the S3 bucket"
+#  type        = string
+#  validation {
+#    condition     = can(regex("^[a-zA-Z0-9.-]{3,63}$", var.bucket_name))
+#    error_message = "Invalid bucket name. The name must be between 3 and 63 characters, contain only letters, numbers, hyphens, and periods, and must not start or end with a hyphen or period."
+#  }
+#}
 
-variable "index_html_filepath" {
-  description = "The path of index file"
+variable "public_path" {
+  description = "The file path of public dir"
   type        = string
-  validation {
-    condition     = fileexists(var.index_html_filepath)
-    error_message = "File index.html not exists"
-  }
-}
-
-variable "error_html_filepath" {
-  description = "The path of error file"
-  type        = string
-  validation {
-    condition     = fileexists(var.error_html_filepath)
-    error_message = "File error.html not exists"
-  }
 }
 
 variable "content_version" {
@@ -43,9 +30,4 @@ variable "content_version" {
     error_message = "The content_version must be a positive integer starting at 1"
   }
   
-}
-
-variable "assets_path" {
-  description = "Path to assets folder"
-  type = string
 }
