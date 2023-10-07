@@ -10,10 +10,6 @@ variable "terratowns_endpoint" {
     type = string
 }
 
-variable "bucket_name" {
-    type = string
-}
-
 variable "milan" {
   type = object({
     public_path = string

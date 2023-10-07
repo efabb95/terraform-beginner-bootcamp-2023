@@ -32,7 +32,6 @@ provider "terratowns" {
 module "home_milan_hosting" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
   public_path = var.milan.public_path
   content_version = var.milan.content_version
 }
@@ -56,7 +55,6 @@ DESCRIPTION
 module "home_rome_hosting" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
   public_path = var.rome.public_path
   content_version = var.rome.content_version
 }
