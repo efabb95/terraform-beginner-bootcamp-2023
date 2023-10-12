@@ -47,7 +47,7 @@ while its metropolitan city has 3.26 million inhabitants.
 DESCRIPTION
   domain_name = module.home_milan_hosting.domain_name
   #domain_name = "3fdq3gz.cloudfront.net"
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.milan.content_version
 }
 
@@ -70,6 +70,6 @@ Union by population within city limits.
 DESCRIPTION
   domain_name = module.home_rome_hosting.domain_name
   #domain_name = "3fdq3gz.cloudfront.net"
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.rome.content_version
 }
